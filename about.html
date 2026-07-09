@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — WorkforceCost.com</title>
+<meta name="description" content="WorkforceCost.com provides free HR calculators to help HR professionals and business leaders understand the true cost of workforce decisions.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #0f1117;
+    --ink-mid:   #3d4252;
+    --ink-muted: #7c8099;
+    --bg:        #f7f7f5;
+    --surface:   #ffffff;
+    --border:    #e2e2dd;
+    --danger:    #c0392b;
+    --accent:    #1a56db;
+    --accent-bg: #eef3fd;
+    --green:     #1a7f5a;
+    --green-bg:  #edf7f2;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: white;
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 40px,
+      rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px
+    );
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    line-height: 1.1; font-weight: 400;
+    max-width: 640px; margin: 0 auto 16px;
+  }
+  .hero h1 em { font-style: italic; color: #f5a623; }
+  .hero-sub {
+    font-size: 15px; color: rgba(255,255,255,0.55);
+    max-width: 440px; margin: 0 auto; line-height: 1.6;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+  /* CARD */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 36px; margin-top: 28px;
+  }
+  @media (max-width: 560px) { .card { padding: 24px; } }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px; font-weight: 400; margin-bottom: 16px; color: var(--ink);
+  }
+
+  .card p {
+    font-size: 15px; color: var(--ink-mid);
+    line-height: 1.75; margin-bottom: 16px;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  .card p strong { color: var(--ink); font-weight: 600; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+  /* VALUES GRID */
+  .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  @media (max-width: 560px) { .values-grid { grid-template-columns: 1fr; } }
+  .value-item {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+  }
+  .value-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .value-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .value-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.55; }
+
+  /* STAT CHIPS */
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+  @media (max-width: 560px) { .stat-row { grid-template-columns: 1fr; } }
+  .stat-chip {
+    background: var(--accent-bg); border: 1px solid #c8d9f7;
+    border-radius: 8px; padding: 16px; text-align: center;
+  }
+  .stat-chip .s-val { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--accent); display: block; margin-bottom: 4px; }
+  .stat-chip .s-label { font-size: 11px; color: #5577bb; line-height: 1.4; }
+
+  /* CTA */
+  .cta-card {
+    background: var(--green-bg); border: 1px solid #b3dece;
+    border-radius: 12px; padding: 28px 32px; margin-top: 28px;
+    text-align: center;
+  }
+  .cta-card .cta-head {
+    font-family: 'DM Serif Display', serif; font-size: 22px;
+    font-weight: 400; color: var(--green); margin-bottom: 8px;
+  }
+  .cta-card p { font-size: 14px; color: #2d6b50; line-height: 1.6; margin-bottom: 20px; }
+  .cta-btn {
+    display: inline-block; background: var(--green); color: white;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    padding: 12px 28px; border-radius: 8px; transition: background 0.15s;
+  }
+  .cta-btn:hover { background: #156349; }
+
+  /* NAV BACK */
+  .nav-back {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 14px 24px; display: flex; align-items: center; gap: 8px;
+  }
+  .nav-back a {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--ink-muted); text-decoration: none; letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .nav-back a:hover { color: var(--ink); }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif; font-size: 15px;
+    color: var(--ink); margin-left: auto;
+  }
+  .nav-logo span { color: var(--danger); }
+
+  /* FOOTER */
+  footer { text-align: center; margin-top: 48px; font-size: 12px; color: var(--ink-muted); }
+  footer a { color: var(--ink-muted); text-decoration: none; }
+  footer a:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-back">
+  <a href="index.html">← Back to Calculator</a>
+  <span class="nav-logo"><span>●</span> WorkforceCost.com</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">WorkforceCost.com · About</p>
+  <h1>Built for the people who <em>own</em> the numbers</h1>
+  <p class="hero-sub">Free, transparent HR calculators for HR professionals, finance teams, and business leaders who need defensible data.</p>
+</div>
+
+<div class="container">
+
+  <!-- MISSION -->
+  <div class="card">
+    <p class="card-title">Why we built this</p>
+    <p>Every HR professional knows that losing an employee is expensive. But when it comes time to put a number on it — for a budget request, a board presentation, or a business case — most teams are left guessing or citing a generic statistic that doesn't reflect their actual situation.</p>
+    <p>WorkforceCost.com exists to change that. We build <strong>free, transparent HR calculators</strong> that give HR teams and business leaders a credible, customizable number they can actually stand behind.</p>
+    <p>Every formula we use is documented. Every assumption is adjustable. And we never pretend a configurable estimate is a published research finding — because your credibility matters.</p>
+  </div>
+
+  <!-- WHO WE SERVE -->
+  <div class="card">
+    <p class="card-title">Who this is for</p>
+    <div class="values-grid">
+      <div class="value-item">
+        <span class="value-icon">👩‍💼</span>
+        <p class="value-title">HR Directors & People Ops</p>
+        <p class="value-desc">Build the business case for retention programs, compensation adjustments, and HR software investment with real numbers.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-icon">📊</span>
+        <p class="value-title">Finance & CFO Teams</p>
+        <p class="value-desc">Quantify the true cost of workforce decisions — not just the salary line, but the full economic impact of turnover.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-icon">🏢</span>
+        <p class="value-title">Small Business Owners</p>
+        <p class="value-desc">Understand what each departure really costs before it happens — and make smarter decisions about compensation and culture.</p>
+      </div>
+      <div class="value-item">
+        <span class="value-icon">🎓</span>
+        <p class="value-title">HR Students & Consultants</p>
+        <p class="value-desc">Use our methodology and sources as a foundation for research, presentations, and client recommendations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BY THE NUMBERS -->
+  <div class="card">
+    <p class="card-title">The problem we're solving</p>
+    <p>Turnover costs are consistently underestimated because they're spread across multiple budget lines — recruiting, HR admin, manager time, lost output — none of which appear together in a single report. WorkforceCost.com brings them all into one place.</p>
+    <div class="stat-row">
+      <div class="stat-chip">
+        <span class="s-val">$1.1T</span>
+        <span class="s-label">lost annually by US businesses to voluntary turnover (Gallup)</span>
+      </div>
+      <div class="stat-chip">
+        <span class="s-val">200%</span>
+        <span class="s-label">of salary — what senior role turnover can cost (Center for American Progress)</span>
+      </div>
+      <div class="stat-chip">
+        <span class="s-val">3×</span>
+        <span class="s-label">how much companies typically underestimate their true turnover costs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="card">
+    <p class="card-title">Get in touch</p>
+    <p>Have a suggestion for a new calculator? Found an error in our methodology? We'd love to hear from you.</p>
+    <p>Reach us at <strong>hello@workforcecost.com</strong></p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-card">
+    <p class="cta-head">Try the calculator</p>
+    <p>See what employee turnover is really costing your organization — in under 60 seconds, with no signup required.</p>
+    <a href="index.html" class="cta-btn">Calculate my turnover cost →</a>
+  </div>
+
+  <footer>
+    <p>© 2025 WorkforceCost.com · <a href="index.html">Calculator</a> · <a href="about.html">About</a> · <a href="privacy.html">Privacy Policy</a></p>
+    <p style="margin-top:6px;">Not financial or legal advice · Sources: BLS, Center for American Progress, Work Institute, Gallup</p>
+  </footer>
+
+</div>
+</body>
+</html>
