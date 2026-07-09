@@ -216,21 +216,31 @@
   /* CTA */
   .cta-section {
     background: var(--green-bg); border: 1px solid #b3dece;
-    border-radius: 12px; padding: 24px 28px; margin-top: 20px;
-    display: flex; flex-direction: column; gap: 16px;
+    border-radius: 12px; padding: 28px 32px; margin-top: 20px;
   }
-  @media (min-width: 560px) { .cta-section { flex-direction: row; align-items: center; justify-content: space-between; } }
-  .cta-text .cta-head { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; color: var(--green); margin-bottom: 4px; }
-  .cta-text p { font-size: 13px; color: #2d6b50; line-height: 1.5; }
-  .cta-links { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+  .cta-head { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; color: var(--green); margin-bottom: 4px; }
+  .cta-sub { font-size: 13px; color: #2d6b50; line-height: 1.5; margin-bottom: 20px; }
+  .cta-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .cta-cards { grid-template-columns: 1fr; } }
+  .cta-card {
+    background: white; border: 1px solid #b3dece;
+    border-radius: 10px; padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .cta-card-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .cta-card-desc { font-size: 12px; color: var(--ink-mid); line-height: 1.5; flex: 1; }
   .cta-link {
     display: inline-block; background: var(--green); color: white;
-    text-decoration: none; font-size: 13px; font-weight: 600;
-    padding: 10px 20px; border-radius: 8px; text-align: center; transition: background 0.15s;
+    text-decoration: none; font-size: 12px; font-weight: 600;
+    padding: 8px 16px; border-radius: 7px; text-align: center;
+    transition: background 0.15s; margin-top: 4px;
   }
   .cta-link:hover { background: #156349; }
-  .cta-link.secondary { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
-  .cta-link.secondary:hover { background: #d4f0e6; }
+  .ftc-note {
+    font-size: 11px; color: var(--ink-muted);
+    margin-top: 14px; line-height: 1.5;
+    border-top: 1px solid #b3dece; padding-top: 12px;
+  }
 
   /* SHARE */
   .share-row { display: flex; align-items: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
@@ -443,14 +453,21 @@
 
   <!-- CTA -->
   <div class="cta-section">
-    <div class="cta-text">
-      <p class="cta-head">Want to reduce this number?</p>
-      <p>The right HR tools can cut turnover by 30–50%. These platforms are used by thousands of HR teams to improve retention, engagement, and hiring efficiency.</p>
+    <p class="cta-head">Want to reduce this number?</p>
+    <p class="cta-sub">The right HR tools can cut turnover by 30–50%. Here are two platforms trusted by thousands of HR teams to improve retention and engagement.</p>
+    <div class="cta-cards">
+      <div class="cta-card">
+        <p class="cta-card-name">💼 Gusto</p>
+        <p class="cta-card-desc">All-in-one payroll, benefits, and HR platform built for small and mid-size businesses. Simplifies the employee experience from day one — reducing friction that drives early turnover.</p>
+        <a class="cta-link" href="https://gusto.com" target="_blank" rel="noopener sponsored">Try Gusto free →</a>
+      </div>
+      <div class="cta-card">
+        <p class="cta-card-name">📊 15Five</p>
+        <p class="cta-card-desc">Continuous performance management and employee engagement platform. Helps managers spot disengaged employees before they become departures — directly targeting the root cause of turnover.</p>
+        <a class="cta-link" href="https://www.15five.com" target="_blank" rel="noopener sponsored">Try 15Five free →</a>
+      </div>
     </div>
-    <div class="cta-links">
-      <a class="cta-link" href="https://www.bamboohr.com" target="_blank" rel="noopener">Try BambooHR →</a>
-      <a class="cta-link secondary" href="https://rippling.com" target="_blank" rel="noopener">Explore Rippling →</a>
-    </div>
+    <p class="ftc-note">⚠️ Affiliate disclosure: WorkforceCost.com may earn a commission if you sign up for a paid plan through the links above, at no extra cost to you. We only recommend tools we believe are genuinely useful for HR teams.</p>
   </div>
 
   <!-- SHARE -->
