@@ -441,9 +441,46 @@
     <button class="share-btn" onclick="shareTwitter()">𝕏 Twitter</button>
   </div>
 
+  <!-- FEEDBACK -->
+  <div class="card" style="margin-top:28px;">
+    <p class="card-title">Share your feedback</p>
+    <p class="card-sub">Help us improve this calculator — we read every message.</p>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div class="field">
+        <label>Your Name</label>
+        <div class="input-wrap">
+          <input type="text" id="fb-name" placeholder="Jane Smith" style="width:100%; height:44px; border:1.5px solid var(--border); border-radius:8px; font-size:15px; font-family:'Inter',sans-serif; color:var(--ink); background:var(--bg); outline:none; padding:0 14px; transition:border-color 0.15s;">
+        </div>
+      </div>
+      <div class="field">
+        <label>Your Email</label>
+        <div class="input-wrap">
+          <input type="email" id="fb-email" placeholder="jane@company.com" style="width:100%; height:44px; border:1.5px solid var(--border); border-radius:8px; font-size:15px; font-family:'Inter',sans-serif; color:var(--ink); background:var(--bg); outline:none; padding:0 14px; transition:border-color 0.15s;">
+        </div>
+      </div>
+      <div class="field">
+        <label>How would you rate this calculator?</label>
+        <div style="display:flex; gap:8px; margin-top:4px;" id="star-row">
+          <span class="star" data-val="1" onclick="setRating(1)" style="font-size:28px; cursor:pointer; opacity:0.3;">★</span>
+          <span class="star" data-val="2" onclick="setRating(2)" style="font-size:28px; cursor:pointer; opacity:0.3;">★</span>
+          <span class="star" data-val="3" onclick="setRating(3)" style="font-size:28px; cursor:pointer; opacity:0.3;">★</span>
+          <span class="star" data-val="4" onclick="setRating(4)" style="font-size:28px; cursor:pointer; opacity:0.3;">★</span>
+          <span class="star" data-val="5" onclick="setRating(5)" style="font-size:28px; cursor:pointer; opacity:0.3;">★</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>Your Feedback</label>
+        <textarea id="fb-message" placeholder="What did you find useful? What could be improved?" style="width:100%; min-height:100px; border:1.5px solid var(--border); border-radius:8px; font-size:14px; font-family:'Inter',sans-serif; color:var(--ink); background:var(--bg); outline:none; padding:12px 14px; resize:vertical; transition:border-color 0.15s; line-height:1.6;"></textarea>
+      </div>
+      <button onclick="submitFeedback()" style="background:var(--ink); color:white; border:none; border-radius:8px; padding:12px 24px; font-size:14px; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; transition:background 0.15s; align-self:flex-start;">Send Feedback →</button>
+      <p id="fb-confirm" style="display:none; font-size:13px; color:var(--green, #1a7f5a); font-weight:500;">✅ Thank you! Your feedback has been sent.</p>
+      <p id="fb-error" style="display:none; font-size:13px; color:var(--danger); font-weight:500;">Please fill in your name, email, and feedback before submitting.</p>
+    </div>
+  </div>
+
   <footer>
     <p>Built for HR professionals & finance teams · WorkforceCost.com · Not financial advice</p>
-    <p style="margin-top:6px;"><a href="#">Privacy</a> · <a href="#">Methodology</a></p>
+    <p style="margin-top:6px;"><a href="about.html">About</a> · <a href="privacy.html">Privacy</a></p>
   </footer>
 
 </div>
@@ -521,6 +558,44 @@
   }
 
   calculate();
+
+  // Star rating
+  let currentRating = 0;
+  function setRating(val) {
+    currentRating = val;
+    document.querySelectorAll('.star').forEach(s => {
+      s.style.opacity = +s.dataset.val <= val ? '1' : '0.3';
+      s.style.color   = +s.dataset.val <= val ? '#f5a623' : '';
+    });
+  }
+
+  // Feedback submission
+  function submitFeedback() {
+    const name    = document.getElementById('fb-name').value.trim();
+    const email   = document.getElementById('fb-email').value.trim();
+    const message = document.getElementById('fb-message').value.trim();
+    const confirm = document.getElementById('fb-confirm');
+    const error   = document.getElementById('fb-error');
+
+    if (!name || !email || !message) {
+      error.style.display = 'block';
+      confirm.style.display = 'none';
+      return;
+    }
+
+    const subject = encodeURIComponent('WorkforceCost.com Feedback — ' + (currentRating ? currentRating + ' stars' : 'No rating'));
+    const body    = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Rating: ' + (currentRating ? currentRating + '/5 stars' : 'Not rated') + '\n\n' +
+      'Feedback:\n' + message
+    );
+
+    window.location.href = 'mailto:hello@workforcecost.com?subject=' + subject + '&body=' + body;
+
+    confirm.style.display = 'block';
+    error.style.display   = 'none';
+  }
 </script>
 </body>
 </html>
